@@ -839,7 +839,9 @@ def create_demo(final_model_path):
         output_dir = "output/gradio"
         prompt_engineering_host = os.environ.get("PROMPT_HOST", None)
         prompt_engineering_model_path = os.environ.get("PROMPT_MODEL_PATH", None)
-        disable_prompt_engineering = os.environ.get("DISABLE_PROMPT_ENGINEERING", False)
+        # Disable prompt engineering by default in Colab/cloud environments
+        # Set to True if Text2MotionPrompter model is not available
+        disable_prompt_engineering = os.environ.get("DISABLE_PROMPT_ENGINEERING", "True").lower() in ("true", "1", "yes")
 
     args = Args()
     _global_args = args  # Set global args for lazy loading
