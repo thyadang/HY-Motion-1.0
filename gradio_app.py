@@ -910,4 +910,5 @@ if __name__ == "__main__":
     # Create demo at module level for Hugging Face Spaces
     final_model_path = try_to_download_model()
     demo = create_demo(final_model_path)
-    demo.launch()
+    demo.launch(share=True,
+    debug=True)
